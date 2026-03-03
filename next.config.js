@@ -3,6 +3,7 @@
  * for Docker builds.
  */
 import "./src/env.js";
+import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -19,4 +20,20 @@ const config = {
     }
 };
 
-export default config;
+export default withSentryConfig(config, {
+  org: "aryan-92",
+  project: "t3-gallery",
+
+  silent: !process.env.CI,
+
+  widenClientFileUpload: true,
+
+  tunnelRoute: "/monitoring",
+
+  webpack: {
+    automaticVercelMonitors: true,
+    treeshake: {
+      removeDebugLogging: true,
+    },
+  },
+});
