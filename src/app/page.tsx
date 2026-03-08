@@ -26,16 +26,16 @@ async function Images() {
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 export default async function HomePage() {
-  
-
   return (
     <main className="">
       <SignedOut>
-        <div className="w-full h-full text-2xl text-center">Please sign in above</div>
+        <div className="h-full w-full text-center text-2xl">
+          Please sign in above
+        </div>
       </SignedOut>
       <SignedIn>
         <Images />

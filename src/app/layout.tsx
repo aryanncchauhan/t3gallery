@@ -28,23 +28,21 @@ const geist = Geist({
 
 export default function RootLayout({
   children,
-  modal
-}: Readonly<{ 
+  modal,
+}: Readonly<{
   children: React.ReactNode;
-  modal: React.ReactNode; 
+  modal: React.ReactNode;
 }>) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <NextSSRPlugin
-          routerConfig={extractRouterConfig(ourFileRouter)}
-        />
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
         <body className={`font-sans ${inter.variable}`}>
-          <div className="h-screen grid grid-rows-[auto,1fr]">
+          <div className="grid h-screen grid-rows-[auto,1fr]">
             <TopNav />
             <main className="overflow-y-scroll">{children}</main>
+            {modal}
           </div>
-          {modal}
           <div id="modal-root" />
         </body>
       </html>
