@@ -8,6 +8,12 @@ import { TopNav } from "./_components/topnav";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "T3 Gallery",
@@ -29,13 +35,15 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${geist.variable}`}>
+      <html lang="en">
         <NextSSRPlugin
           routerConfig={extractRouterConfig(ourFileRouter)}
         />
-        <body className={"flex flex-col gap-4"}>
-          <TopNav />
-          {children}
+        <body className={`font-sans ${inter.variable}`}>
+          <div className="h-screen grid grid-rows-[auto,1fr]">
+            <TopNav />
+            <main className="overflow-y-scroll">{children}</main>
+          </div>
           {modal}
           <div id="modal-root" />
         </body>
