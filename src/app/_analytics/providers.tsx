@@ -7,7 +7,7 @@ import { PostHogProvider as PHProvider } from "posthog-js/react";
 import { useAuth, useUser } from "@clerk/nextjs";
 
 if (typeof window !== "undefined") {
-  posthog.init(process.env.next_PUBLIC_POSTHOG_KEY!, {
+  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
     api_host: "/ph",
     ui_host: "https://us.posthog.com",
   });

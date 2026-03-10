@@ -1,5 +1,5 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { getMyImages } from "~/server/db/queries";
+import { getMyImages } from "~/server/queries";
 import Image from "next/image";
 import Link from "next/link";
 
